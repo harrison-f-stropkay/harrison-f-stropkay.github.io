@@ -20,7 +20,7 @@ jobs:
       - name: Set last updated date
         run: |
           DATE=$(git log -1 --date=format:'%b %d, %Y' --format='%ad')
-          sed -i "s/<span id=\"last-updated\">[^<]*<\/span>/<span id=\"last-updated\">${DATE}<\/span>/" index.html
+          sed -i "s/<span class=\"last-updated-date\">[^<]*<\/span>/<span class=\"last-updated-date\">${DATE}<\/span>/" index.html
 
       - name: Commit and push if changed
         run: |
