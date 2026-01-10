@@ -1,0 +1,32 @@
+name: Update last updated
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-last-updated:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Set last updated date
+        run: |
+          DATE=$(git log -1 --date=format:'%b %d, %Y' --format='%ad')
+          sed -i "s/<span id=\"last-updated\">[^<]*<\/span>/<span id=\"last-updated\">${DATE}<\/span>/" index.html
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Update last updated date"
+          git push
