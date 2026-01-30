@@ -1,23 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600&display=swap");
 
 :root {
-  --ink: #13161a;
-  --muted: #4f5b66;
+  --text: #13161a;
+  --text-muted: #4f5b66;
   --accent: #2f5e78;
-  --paper: #f6f1e7;
-  --rule: #d7dde3;
+  --bg: #f6f1e7;
+  --border: #d7dde3;
 }
 
 * {
   box-sizing: border-box;
+  font-family: inherit;
 }
 
 body {
   margin: 0;
   padding: 44px 24px 72px;
+  max-width: 760px;
+  margin-inline: auto;
   font-family: "Public Sans", sans-serif;
-  color: var(--ink);
-  background: var(--paper);
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  background: var(--bg);
   line-height: 1.55;
 }
 
@@ -40,18 +44,16 @@ body {
 }
 
 .last-updated {
-  margin: 0 0 0.4rem;
+  margin: 0.2rem 0;
   line-height: 1;
-  font-size: 0.85rem;
-  color: var(--muted);
+  font-size: 0.95rem;
   white-space: nowrap;
   transform: translateY(2px);
 }
 
-.link-row {
+.email {
   margin: 0 0 0.5rem;
-  font-size: 0.9rem;
-  color: var(--muted);
+  font-size: 1rem;
   transform: translateY(5px);
 }
 
@@ -60,26 +62,21 @@ h1 {
   font-weight: 600;
   margin: 0;
   line-height: 1;
+  color: var(--text);
 }
 
 h2 {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
-  margin: 2.2rem 0 0.7rem;
-}
-
-p,
-li {
-  color: var(--muted);
-  font-size: 0.98rem;
+  margin: 2rem 0 0.7rem;
 }
 
 a {
-  color: var(--ink);
+  color: var(--text);
   text-decoration: none;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--border);
 }
 
 a:hover {
@@ -95,21 +92,18 @@ ul {
   gap: 12px;
   align-items: center;
   justify-content: center;
-  transform: translateY(2px);
+  margin-top: 3rem;
+  margin-bottom: -2rem;
   width: 100%;
 }
-
 
 .icon-row a {
   border-bottom: none;
 }
 
-
-@media (min-width: 800px) {
-  body {
-    max-width: 760px;
-    margin: 0 auto;
-  }
+.icon-row svg {
+  width: 24px;
+  height: 24px;
 }
 
 @media (max-width: 700px) {
